@@ -27,11 +27,12 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText searchInput;
     private ListView videosFound;
     EditText ed;
+    TextView voice,text;
     TextView tv;
     private static final int REQUEST_CODE = 1234;
     Button speak;
@@ -43,21 +44,22 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         searchInput = (EditText) findViewById(R.id.search_input);
-        ed = (EditText) findViewById(R.id.editText1);
-        tv = (TextView) findViewById(R.id.textView1);
         videosFound = (ListView) findViewById(R.id.videos_found);
+        voice = (TextView) findViewById(R.id.voice_search);
+        text = (TextView) findViewById(R.id.text_search) ;
+        text.setOnClickListener(this);
         handler = new Handler();
 
-//        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-//            @Override
-//            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-//                if (actionId == EditorInfo.IME_ACTION_DONE) {
-//                    searchOnYoutube(v.getText().toString());
-//                    return false;
-//                }
-//                return true;
-//            }
-//        });
+        searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    searchOnYoutube(v.getText().toString());
+                    return false;
+                }
+                return true;
+            }
+        });
         addClickListener();
 
         // Disable button if no recognition service is present
@@ -67,29 +69,11 @@ public class SearchActivity extends AppCompatActivity {
             speak.setEnabled(false);
             speak.setText("Recognizer not present");
         }
-        ed.addTextChangedListener(new TextWatcher() {
-            @
-                    Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // TODO Auto-generated method stub
-            }
 
-            @
-                    Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // TODO Auto-generated method stub
-            }
-
-            @
-                    Override
-            public void afterTextChanged(Editable s) {
-                // TODO Auto-generated method stub
-                speak.setEnabled(false);
-            }
-        });
     }
     public void speakButtonClicked(View v)
     {
+        searchInput.setVisibility(View.GONE);
         startVoiceRecognitionActivity();
     }
     /**
@@ -180,5 +164,19 @@ public class SearchActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View view) {
+        int id= view.getId();
 
+        switch (id){
+
+
+            case R.id.text_search:
+                searchInput.setVisibility(View.VISIBLE);
+                break;
+                default:
+                    break;
+
+        }
+    }
 }
