@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "com.example.alam.appliedtube"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    compile files('libs/google-api-client-1.23.0.jar')
+    compile files('libs/google-api-client-appengine-1.23.0.jar')
+    compile files('libs/google-api-client-gson-1.23.0.jar')
+    compile files('libs/google-http-client-jackson2-1.23.0.jar')
+    compile files('libs/google-http-client-jdo-1.23.0.jar')
+    compile files('libs/google-oauth-client-1.23.0.jar')
+    compile files('libs/google-oauth-client-appengine-1.23.0.jar')
+    compile files('libs/google-oauth-client-java6-1.23.0.jar')
+    compile files('libs/google-oauth-client-jetty-1.23.0.jar')
+    compile files('libs/google-oauth-client-servlet-1.23.0.jar')
+    compile files('libs/google-api-services-youtube-v3-rev192-1.23.0.jar')
+}
