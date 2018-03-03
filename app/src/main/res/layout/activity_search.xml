@@ -11,6 +11,27 @@
         android:id="@+id/search_input"
         android:singleLine="true"
         />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dip"
+        android:text="Click the button " />
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button android:id="@+id/speakButton"
+        android:layout_width="fill_parent"
+        android:onClick="speakButtonClicked"
+        android:layout_height="wrap_content"
+        android:text="Click here!" />
 
     <ListView
         android:id="@+id/videos_found"
