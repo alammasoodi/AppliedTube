@@ -38,7 +38,9 @@ public class YoutubeConnector {
         try {
             query = youtube.search().list("id,snippet");
             query.setKey(KEY);
-            query.setType("video");
+            query.setMaxResults((long) 10);
+
+           // query.setType("video");
             query.setFields("items(id/videoId,snippet/title,snippet/description,snippet/thumbnails/default/url)");
         } catch (IOException e) {
             Log.d("YC", "Could not initialize: " + e);
