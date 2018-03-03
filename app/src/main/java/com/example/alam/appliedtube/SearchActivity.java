@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
@@ -75,7 +77,7 @@ public class SearchActivity extends AppCompatActivity {
 
                 VideoItem searchResult = searchResults.get(position);
 
-                //Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
+                Picasso.with(getApplicationContext()).load(searchResult.getThumbnailURL()).into(thumbnail);
                 title.setText(searchResult.getTitle());
                 description.setText(searchResult.getDescription());
                 return convertView;
