@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -32,6 +33,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     private EditText searchInput;
     private ListView videosFound;
     EditText ed;
+    //ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+
     TextView voice,text;
     TextView tv;
     private static final int REQUEST_CODE = 1234;
@@ -49,7 +52,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         text = (TextView) findViewById(R.id.text_search) ;
         text.setOnClickListener(this);
         handler = new Handler();
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.appliedtubeicon);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
         searchInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
